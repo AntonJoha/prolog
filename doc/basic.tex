@@ -1,0 +1,33 @@
+
+
+
+\section{Grammar}
+
+This is a grammar presented in a BNF. 
+
+
+\begin{lstlisting}
+expression-list ::= <expression> <expression-list> | <expression>
+expression ::= <list> 
+	| <evals>
+list ::= '( <entry-list> )
+evals ::= ( <func> <entry-list> ) | ( ) 
+func ::= <operator> | <pre-defined>
+id ::= [a-z,A-Z][a-z,A-Z,0-9,\_]+
+	| <operator> 
+string ::= "[.]*"
+<entry> ::= <number> | <id> | <expression-list> | <string>
+<number> ::= <integer> | <float> 
+<integer> ::= [0-9]+
+<float> ::= [0-9]+ . [0-9]
+<entry-list> ::= <entry> <entry-list> | empty
+operator ::= *
+	| +
+	| -
+	| !
+	| < 
+	| ||
+	| ==
+	| &&
+	| /
+\end{lstlisting}
