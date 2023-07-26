@@ -3,31 +3,20 @@
 
 \section{Grammar}
 
-This is a grammar presented in a BNF. 
+This is a grammar presented in a BNF for a basic Prolog. 
 
 
 \begin{lstlisting}
-expression-list ::= <expression> <expression-list> | <expression>
-expression ::= <list> 
-	| <evals>
-list ::= '( <entry-list> )
-evals ::= ( <func> <entry-list> ) | ( ) 
-func ::= <operator> | <pre-defined>
-id ::= [a-z,A-Z][a-z,A-Z,0-9,\_]+
-	| <operator> 
-string ::= "[.]*"
-<entry> ::= <number> | <id> | <expression-list> | <string>
-<number> ::= <integer> | <float> 
-<integer> ::= [0-9]+
-<float> ::= [0-9]+ . [0-9]
-<entry-list> ::= <entry> <entry-list> | empty
-operator ::= *
-	| +
-	| -
-	| !
-	| < 
-	| ||
-	| ==
-	| &&
-	| /
+STATEMENT ::= FACT | RULE | QUERY
+FACT ::= ATOM '.'
+RULE ::= ATOM ':-' ATOMS '.'
+QUERY ::= '?-' ATOMS '.'
+ATOMS ::= ATOM | ATOM ',' ATOMS
+ATOM ::= PREDICATE | PREDICATE '(' TERMS ')'
+TERMS ::= TERM | TERM ',' TERMS
+TERM ::= VARIABLE | CONSTANT
+VARIABLE ::= [a-z][a-zA-Z0-9_]*
+CONSTANT ::= [A-Z][a-zA-Z0-9_]*
+PREDICATE ::= [a-z][a-zA-Z0-9_]*
+WHITE_SPACE ::= ' ' | '\n' | '\t'
 \end{lstlisting}
